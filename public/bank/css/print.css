@@ -1,0 +1,437 @@
+/*------------------------------------*\
+    Global PRINT CSS
+\*------------------------------------*/
+/**
+ * COMMON STYLING FOR PRINTERS 
+*/
+/*------------------------------------*\
+    $COMMON PRINT STYLING
+\*------------------------------------*/
+/* line 12, ../sass/print.scss */
+* {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* line 17, ../sass/print.scss */
+img {
+  max-width: 100% !important;
+}
+
+@page {
+  margin: 0.5cm;
+}
+
+/*Don't show links for images, or javascript/internal links*/
+/* line 27, ../sass/print.scss */
+.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+  content: "";
+}
+
+/* line 31, ../sass/print.scss */
+.wrapper {
+  width: 100%;
+}
+
+/* line 35, ../sass/print.scss */
+.shelf, .sub-nav-item {
+  background: transparent !important;
+  color: black !important;
+}
+
+/* line 40, ../sass/print.scss */
+.shelf {
+  padding: 1.5em 0 0;
+}
+
+/* line 44, ../sass/print.scss */
+.shelf .shelf__inner.shelf--padded {
+  padding: 0;
+}
+
+/* line 48, ../sass/print.scss */
+.cookie {
+  padding: 1.625em 10% 1.625em 5%;
+  width: 85%;
+  background-color: #fff;
+}
+
+/* line 54, ../sass/print.scss */
+.global-links {
+  position: relative;
+  top: -3.2em;
+}
+
+/* line 59, ../sass/print.scss */
+.search-list, .shelf--hero .image, .shelf--hero .social-bar {
+  display: none;
+}
+
+/* line 63, ../sass/print.scss */
+.sub-nav-item {
+  margin-bottom: 1em;
+}
+
+/* line 67, ../sass/print.scss */
+.sub-nav-item__inner {
+  height: auto !important;
+}
+
+/* line 72, ../sass/print.scss */
+.cta a, .tool, .header--desktop .header__snav .snav__tab, .shelf--hero .hero__heading,
+.shelf--hero .hero__signpost, .hero__footline, .breadcrumb__list li a {
+  color: black !important;
+}
+
+/* line 76, ../sass/print.scss */
+.cta.cta--branded a {
+  color: white !important;
+}
+
+/* line 80, ../sass/print.scss */
+.next-steps .col-right {
+  position: relative;
+}
+
+/* line 84, ../sass/print.scss */
+.next-steps .cta {
+  margin-left: 0;
+}
+
+/* line 88, ../sass/print.scss */
+.next-steps__links {
+  width: 420px;
+}
+
+/* line 91, ../sass/print.scss */
+.next-steps__links li {
+  float: left;
+  width: 45% !important;
+  padding-left: 10px;
+}
+
+/* line 97, ../sass/print.scss */
+.tool {
+  background: none;
+}
+
+/* line 101, ../sass/print.scss */
+.offer .comp-rich-text .body-copy {
+  color: #000000;
+}
+
+/* line 105, ../sass/print.scss */
+.bl__text, .bl__text .comp-rich-text .body-copy {
+  color: #000000;
+  margin-bottom: 20px;
+  display: block;
+  clear: both;
+}
+
+/* line 112, ../sass/print.scss */
+.faq-search {
+  margin-bottom: 40px;
+}
+
+/* line 116, ../sass/print.scss */
+.main--tool-desk {
+  clear: both;
+  float: left;
+  margin-bottom: 40px;
+}
+
+/* line 122, ../sass/print.scss */
+.header--global-nav .expanded-nav {
+  float: left;
+  display: block;
+  clear: both;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+/* line 130, ../sass/print.scss */
+.header--global-nav .expanded-nav .right-nav {
+  width: 80%;
+}
+
+/* line 134, ../sass/print.scss */
+.header--global-nav .expanded-nav .right-nav .icon-links span a {
+  background-image: none !important;
+}
+
+/* line 138, ../sass/print.scss */
+.footer {
+  display: none;
+  background: none;
+  border-top: solid #000 1px;
+  margin-top: 1em;
+  clear: both;
+  float: left;
+  display: block;
+}
+/* line 146, ../sass/print.scss */
+.footer li, .footer li a, .footer .find-us__head {
+  color: #000;
+}
+
+/* line 151, ../sass/print.scss */
+.desk--one-sixth {
+  width: 16%;
+}
+
+/* line 155, ../sass/print.scss */
+.desk--one-fifth {
+  width: 20%;
+}
+
+/* line 159, ../sass/print.scss */
+.desk--one-quarter {
+  width: 24%;
+}
+
+/* line 163, ../sass/print.scss */
+.desk--one-third {
+  width: 30%;
+}
+
+/* line 167, ../sass/print.scss */
+.desk--two-thirds {
+  width: 60%;
+}
+
+/* line 171, ../sass/print.scss */
+.desk--one-half {
+  width: 50%;
+}
+
+/* line 175, ../sass/print.scss */
+.shelf .shelf__inner.shelf--padded {
+  padding: 0 1.231em !important;
+}
+
+/* line 180, ../sass/print.scss */
+.lt-ie9 .desk--one-sixth {
+  width: 13.5%;
+}
+/* line 183, ../sass/print.scss */
+.lt-ie9 .desk--one-fifth {
+  width: 16%;
+}
+/* line 186, ../sass/print.scss */
+.lt-ie9 .desk--one-quarter {
+  width: 20%;
+}
+/* line 189, ../sass/print.scss */
+.lt-ie9 .desk--one-third {
+  width: 25.5%;
+}
+/* line 192, ../sass/print.scss */
+.lt-ie9 .desk--two-thirds {
+  width: 57%;
+}
+/* line 195, ../sass/print.scss */
+.lt-ie9 .desk--one-half {
+  width: 40%;
+}
+
+/* line 201, ../sass/print.scss */
+.ie8 next-steps .col-right, .ie8 .next-steps .col-left {
+  width: 30%;
+  margin: 0 !important;
+}
+
+/*Chrome to use every background color and image*/
+/* line 208, ../sass/print.scss */
+html {
+  -webkit-print-color-adjust: exact;
+}
+
+/* line 212, ../sass/print.scss */
+.main--tool-desk {
+  background: none !important;
+}
+
+/* line 216, ../sass/print.scss */
+.header, .breadcrumb {
+  display: none !important;
+}
+
+/* line 220, ../sass/print.scss */
+.main--tool-desk .shelf, .main--tool-desk .shelf .shelf__inner.shelf--padded {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* line 225, ../sass/print.scss */
+.mortgage-products .product-details .product-details__table {
+  height: 100% !important;
+}
+
+/* line 229, ../sass/print.scss */
+.accordion .accordion__content {
+  float: none !important;
+  height: 100% !important;
+}
+
+/* line 234, ../sass/print.scss */
+.mortgages-details__prod-info-table {
+  width: 100% !important;
+}
+
+/* line 238, ../sass/print.scss */
+.lending-details {
+  width: 775px;
+  padding-left: 0.5em;
+}
+/* line 241, ../sass/print.scss */
+.lending-details .lending-amount {
+  width: 19.25385em;
+  padding-left: 0;
+}
+/* line 245, ../sass/print.scss */
+.lending-details .property-value {
+  width: 13.61538em;
+  padding-left: 0.3em;
+}
+/* line 249, ../sass/print.scss */
+.lending-details .loan-to-value {
+  width: 16em;
+  padding-left: 0.3em;
+}
+/* line 252, ../sass/print.scss */
+.lending-details .loan-to-value .mortgage-cta-link--print {
+  padding-right: 0.7em;
+}
+
+/* line 258, ../sass/print.scss */
+.lending-details, .mortgage-products .mortgages-details, .accordion .accordion__item--odd, .mortgage-products .accordion__show-more, .mortgage-products .product-details {
+  background-color: #fff;
+}
+
+/* line 263, ../sass/print.scss */
+.mortgage-products .more--info {
+  width: 120px;
+}
+/* line 267, ../sass/print.scss */
+.mortgage-products .mortgages-details__prod-info-table .prod-info-head {
+  font-size: 11px;
+}
+/* line 269, ../sass/print.scss */
+.mortgage-products .mortgages-details__prod-info-table .prod-info-head .prod-info-head__txt {
+  font-size: 9px;
+}
+
+/* line 278, ../sass/print.scss */
+.lending-details .loan-to-value .mortgage-cta-link--print {
+  font-size: 14px;
+}
+/* line 283, ../sass/print.scss */
+.lending-details .loan-to-value .mortgage-cta-link--mail {
+  font-size: 14px;
+}
+/* line 288, ../sass/print.scss */
+.lending-details .lending-amount .lending-amount__amount {
+  font-size: 50px;
+}
+/* line 293, ../sass/print.scss */
+.lending-details .property-value .property-value__amount {
+  font-size: 30px;
+}
+/* line 297, ../sass/print.scss */
+.lending-details .cta-result-page {
+  margin-top: 5px;
+  font-size: 14px;
+}
+/* line 300, ../sass/print.scss */
+.lending-details .cta-result-page a {
+  font-size: 14px;
+}
+
+/* line 308, ../sass/print.scss */
+.main--tool-desk .grid__item .accordion__head {
+  font-size: 14px;
+}
+/* line 312, ../sass/print.scss */
+.main--tool-desk .grid__item .mortgage-products .trim-products {
+  width: 100px;
+}
+/* line 317, ../sass/print.scss */
+.main--tool-desk .grid__item .comp-rich-text li {
+  font-size: 8px;
+}
+/* line 322, ../sass/print.scss */
+.main--tool-desk .progress-bar {
+  display: none;
+}
+
+/* line 327, ../sass/print.scss */
+.grid-margin {
+  padding-right: 150px;
+}
+
+/* line 331, ../sass/print.scss */
+.footer {
+  display: none;
+}
+
+/* line 335, ../sass/print.scss */
+.teaser__head {
+  height: auto !important;
+  width: 365px !important;
+}
+
+/* line 340, ../sass/print.scss */
+.shelf--first {
+  padding-top: 5em;
+}
+
+/* line 344, ../sass/print.scss */
+.comp-rich-text span.cta.cta--branded.cta--m a {
+  font-size: 15px;
+  padding-left: 1.1em;
+  padding-right: 36px !important;
+}
+
+/* line 350, ../sass/print.scss */
+.bl__icon-checkmark {
+  float: left;
+  width: 9%;
+  height: 2.5em;
+  clear: none;
+  overflow: hidden;
+}
+
+/* line 358, ../sass/print.scss */
+.grid .benefits-list {
+  font-size: 2.1rem;
+  width: 100%;
+}
+
+/* line 363, ../sass/print.scss */
+.bl__text {
+  float: left !important;
+  width: 87% !important;
+  clear: none;
+  overflow: hidden;
+}
+
+/* line 370, ../sass/print.scss */
+.bl__text .comp-rich-text p {
+  padding-right: 1.25em;
+}
+
+/* line 374, ../sass/print.scss */
+.shelf__bl .grid .bl__icon-checkmark:before {
+  font-size: 1.7rem;
+}
+
+/* line 378, ../sass/print.scss */
+.teaser__head .cta a {
+  font-size: 2.3rem;
+}
+
+/* hide chat button from print*/
+/* line 382, ../sass/print.scss */
+#livePerson {
+  display: none;
+}
