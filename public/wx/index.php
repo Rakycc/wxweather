@@ -1,4 +1,10 @@
 <?php
+$wechatObj = new wechatCallbackapiTest();
+$wechatObj->responseMsg();
+class wechatCallbackapiTest
+{
+    public function responseMsg()
+    {
     //获得参数 signature nonce token timestamp echostr
     $nonce     = $_GET['nonce'];
     $token     = 'cat';
@@ -16,12 +22,7 @@
         echo  $echostr;
         exit;
     }
-else{
-  /*$fp=fopen("./data.txt","a");
-  $str="helloworld";
-  fwrite($fp,$str);
-  fclode($fp);*/
-
+    else{
         //1.获取到微信推送过来post数据（xml格式）
         $postArr = $GLOBALS['HTTP_RAW_POST_DATA'];
         //2.处理消息类型，并设置回复类型和内容
@@ -47,30 +48,25 @@ else{
                 echo $info;
             }
         }
-      
-      //判断该数据包是否是文本消息
+        //判断该数据包是否是文本消息
         if( strtolower( $postObj->MsgType) == 'text'){
-             //接受文本信息
-    		$content = $postObj->Content;
-             //回复用户消息(纯文本格式)
-                $toUser   = $postObj->FromUserName;
-                $fromUser = $postObj->ToUserName;
-                $time     = time();
-                $msgType  =  'text';
-          		if($content=="北京天气"){
-                  $content  = "北京温度为：10度"."\n"."风力为：四级";
-                  $template = "<xml>
-                                <ToUserName><![CDATA[%s]]></ToUserName>
-                                <FromUserName><![CDATA[%s]]></FromUserName>
-                                <CreateTime>%s</CreateTime>
-                                <MsgType><![CDATA[%s]]></MsgType>
-                                <Content><![CDATA[%s]]></Content>
-                                </xml>";
-                  $info     = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
-                  echo $info;
+            //接受文本信息
+            $content = $postObj->Content;
+            //回复用户消息(纯文本格式)
+            $toUser   = $postObj->FromUserName;
+            $fromUser = $postObj->ToUserName;
+            $time     = time();
+            $msgType  =  'text';
+            $str = mb_substr($content,-2,2,"UTF-8");
+            $str_key = mb_substr($content,0,-2,"UTF-8");
+            if($str == '天气' && !empty($str_key)){
+                $data = $this->weather($str_key);
+                if(empty($data->result)){
+                    $content = "抱歉，没有查到\"".$str_key."\"的天气信息！";
                 }
-          else if($content=="天气网页"){
-                  $content  = "http://192.144.153.102/index/login/weather.html";
+                else{
+                    $content = "【".$data->result->realtime->city_name."天气预报】\n".$data->result->realtime->date." ".$data->result->realtime->time."发布"."\n\n实时天气\n".$data->result->realtime->weather->info." ".$data->result->realtime->weather->temperature."度\npm2.5指数：".$data->result->pm25->pm25->pm25."\n\n温馨提示：".$data->result->pm25->pm25->des;
+                }
                 $template = "<xml>
                                 <ToUserName><![CDATA[%s]]></ToUserName>
                                 <FromUserName><![CDATA[%s]]></FromUserName>
@@ -78,19 +74,32 @@ else{
                                 <MsgType><![CDATA[%s]]></MsgType>
                                 <Content><![CDATA[%s]]></Content>
                                 </xml>";
-                $info     = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+                $info= sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
                 echo $info;
-                }
-                else{$content  = '您发送的内容是：'.$content;
+            }
+            else{
+                $content  = '您发送的内容是：'.$content;
                 $template = "<xml>
-                                <ToUserName><![CDATA[%s]]></ToUserName>
-                                <FromUserName><![CDATA[%s]]></FromUserName>
-                                <CreateTime>%s</CreateTime>
-                                <MsgType><![CDATA[%s]]></MsgType>
-                                <Content><![CDATA[%s]]></Content>
-                                </xml>";
-                $info     = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
+                <MsgType><![CDATA[%s]]></MsgType>
+                <Content><![CDATA[%s]]></Content>
+                </xml>";
+                $info= sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
                 echo $info;
-                    }
+            }
         }
     }
+}
+private function weather($n){
+    include("weather_cityId.php");
+    $c_name=$weather_cityId[$n];
+    if(!empty($c_name)){
+        $json=file_get_contents("http://api.avatardata.cn/Weather/Query?key=d19c74b1049e4385af80e1c4eda56ddf&cityname=".$n);
+        return json_decode($json);
+    } else {
+        return null;
+    }
+}
+}
